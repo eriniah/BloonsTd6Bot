@@ -31,26 +31,19 @@ def collect_event(game):
 		game.hotkey('escape')
 	time.sleep(4)
 
-def play(delay_handler):
-	print('Start: ' + str(datetime.datetime.now()))
+def play(delay_handler, map_strategy):
+	print('Starting map {} at {}'.format(map_strategy['map'], str(datetime.datetime.now())))
 	game = MainMenuNavigator(delay_handler).play()\
-		.select_map('dark_castle')\
-		.select('easy', 'deflation')
+		.select_map(map_strategy['map'])\
+		.select(map_strategy['difficulty'], map_strategy['mode'])
 
-	hero = game.place_tower('hero', Point(600, 380))
+	for tower_config in map_strategy['towers']:
+		tower = game.place_tower(tower_config['tower'], Point(tower_config['location']['x'], tower_config['location']['y']))
+		if 'upgrades' in tower_config:
+			tower.upgrade(*list(map(lambda x: x['path'], tower_config['upgrades'])))
 
-	super_monkey = game.place_tower('super_monkey', Point(685, 380))
-	super_monkey.upgrade(1, 1, 3, 3, 3)
-
-	ninja_monkey = game.place_tower('ninja_monkey', Point(770, 380))
-	ninja_monkey.upgrade(1, 1, 1, 3, 3)
-
-	spike_factory = game.place_tower('spike_factory', Point(1275, 480))
-	# spike_factory.upgrade(3)
-
-	farm_monkey = game.place_tower('mortar_monkey', Point(770, 680))
-	# place mortar target
-	game.relative_click(Point(600, 540))
+		if 'target' in tower_config:
+			tower.target(tower_config['target'])
 
 	game.start()
 
@@ -82,7 +75,7 @@ def play(delay_handler):
 
 if __name__ == "__main__":
 	parser = argparse.ArgumentParser()
-	parser.add_argument('MAP_STRATEGY')
+	parser.add_argument('map_strategy')
 	parser.add_argument('--system-config', dest='system_config', default='./system.json')
 	args = parser.parse_args()
 
@@ -91,9 +84,12 @@ if __name__ == "__main__":
 		system_config = json.load(config_file)
 		delay_handler = create_delay_handler(system_config['delays'])
 
+	with open(args.map_strategy, 'r') as config_file:
+		map_strategy = json.load(config_file)
+
 	time.sleep(5)
 	count = 1
 	while True:
 		print('Game: ' + str(count))
-		play(delay_handler)
+		play(delay_handler, map_strategy)
 		count += 1

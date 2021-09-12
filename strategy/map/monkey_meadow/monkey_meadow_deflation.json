@@ -1,6 +1,6 @@
 {
-	"name": "Dark Castle - Deflation",
-	"map": "dark_castle",
+	"name": "Monkey Meadow - Deflation",
+	"map": "monkey_meadow",
 	"difficulty": "easy",
 	"mode": "deflation",
 	"hero": "obyn",
@@ -8,15 +8,40 @@
 		{
 			"tower": "hero",
 			"location": {
-				"x": 600,
-				"y": 380
+				"x": 530,
+				"y": 330
 			}
+		},
+		{
+			"tower": "bomb_shooter",
+			"location": {
+				"x": 334,
+				"y": 266
+			},
+			"upgrades": [
+				{
+					"path": 1
+				},
+				{
+					"path": 1
+				},
+				{
+					"path": 2
+				},
+				{
+					"path": 2
+				},
+				{
+					"path": 2
+				}
+			],
+			"target": "strong"
 		},
 		{
 			"tower": "super_monkey",
 			"location": {
-				"x": 685,
-				"y": 380
+				"x": 380,
+				"y": 600
 			},
 			"upgrades": [
 				{
@@ -27,30 +52,6 @@
 				},
 				{
 					"path": 3
-				},
-				{
-					"path": 3
-				},
-				{
-					"path": 3
-				}
-			]
-		},
-		{
-			"tower": "ninja_monkey",
-			"location": {
-				"x": 770,
-				"y": 380
-			},
-			"upgrades": [
-				{
-					"path": 1
-				},
-				{
-					"path": 1
-				},
-				{
-					"path": 1
 				},
 				{
 					"path": 3
@@ -63,8 +64,8 @@
 		{
 			"tower": "spike_factory",
 			"location": {
-				"x": 1275,
-				"y": 480
+				"x": 957,
+				"y": 407
 			}
 		}
 	]

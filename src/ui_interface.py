@@ -326,6 +326,13 @@ class GameInterface(UiInterface):
 
 
 upgrade_hotkeys = [',', '.', '/']
+# targets for most towers
+tower_targets = [
+	'first',
+	'last',
+	'close',
+	'strong'
+]
 
 class TowerInterface(UiInterface):
 	""" Represents a single tower on the map
@@ -350,7 +357,7 @@ class TowerInterface(UiInterface):
 	def upgrade(self, *paths):
 		""" Upgrade a monkey
 
-		Args
+		Args:
 			paths: A tuple of paths to upgrade the monkey on. 1, 2 or 3 ex: (1, 1) would put to points into the top tree
 		"""
 		self.relative_click(self.location)
@@ -360,5 +367,32 @@ class TowerInterface(UiInterface):
 			self.upgrades[path - 1] += 1
 			self.hotkey(upgrade_hotkeys[path - 1])
 			self._delay_handler.in_game_action_delay()
+		self.hotkey('escape')
+		self._delay_handler.in_game_action_delay()
+
+	def target(self, target):
+		""" Change target
+
+		Args:
+			target: Change target
+		"""
+		print("Targeting {}".format(target))
+
+		# Naive implementation that only supports setting once
+		index = None
+		for i, t in enumerate(tower_targets):
+			if t == target:
+				index = i
+
+		if not index:
+			print("Target {} not found".format(target))
+			return
+
+		self.relative_click(self.location)
+		self._delay_handler.in_game_action_delay()
+		for i in index:
+				self.hotkey('tab')
+				self._delay_handler.in_game_action_delay()
+
 		self.hotkey('escape')
 		self._delay_handler.in_game_action_delay()

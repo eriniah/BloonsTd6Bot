@@ -65,6 +65,12 @@
 			"type": "string",
 			"const": "deflation"
 		},
+		"hero": {
+			"type": "string",
+			"enum": [
+				"obyn"
+			]
+		},
 		"towers": {
 			"type": "array",
 			"items": {
@@ -130,6 +136,15 @@
 								"path"
 							]
 						}
+					},
+					"target": {
+						"type": "string",
+						"enum": [
+							"first",
+							"last",
+							"close",
+							"strong"
+						]
 					}
 				},
 				"required": [
