@@ -1,0 +1,64 @@
+{
+	"name": "Dark Castle 1",
+	"map": "dark_castle",
+	"difficulty": "easy",
+	"mode": "deflation",
+	"hero": "obyn",
+	"towers": [
+		{
+			"tower": "hero",
+			"location": {
+				"x": 600,
+				"y": 380
+			}
+		},
+		{
+			"tower": "super_monkey",
+			"location": {
+				"x": 685,
+				"y": 380
+			},
+			"upgrades": [
+				{
+					"path": 1
+				},
+				{
+					"path": 1
+				},
+				{
+					"path": 1
+				},
+				{
+					"path": 3
+				},
+				{
+					"path": 3
+				}
+			]
+		},
+		{
+			"tower": "ninja_monkey",
+			"location": {
+				"x": 770,
+				"y": 380
+			},
+			"upgrades": [
+				{
+					"path": 1
+				},
+				{
+					"path": 1
+				},
+				{
+					"path": 3
+				},
+				{
+					"path": 3
+				},
+				{
+					"path": 3
+				}
+			]
+		}
+	]
+}

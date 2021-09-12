@@ -1,0 +1,7 @@
+{
+	"delays": {
+		"game_start": 5,
+		"menu_navigate": 1,
+		"in_game_action": 0.2
+	}
+}

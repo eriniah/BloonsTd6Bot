@@ -1,0 +1,28 @@
+{
+	"$schema": "http://json-schema.org/draft/2019-09/schema#",
+	"type": "object",
+	"properties": {
+		"delays": {
+			"type": "object",
+			"properties": {
+				"game_start": {
+					"type": "number"
+				},
+				"menu_navigate": {
+					"type": "number"
+				},
+				"in_game_action": {
+					"type": "number"
+				}
+			},
+			"required": [
+				"game_start",
+				"menu_navigate",
+				"in_game_action"
+			]
+		}
+	},
+	"required": [
+		"delays"
+	]
+}

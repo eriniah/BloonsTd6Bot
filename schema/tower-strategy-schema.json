@@ -1,0 +1,220 @@
+{
+	"$schema": "http://json-schema.org/draft/2019-09/schema#",
+	"type": "object",
+	"properties": {
+		"name": {
+			"type": "string"
+		},
+		"map": {
+			"type": "string",
+			"enum": [
+				"monkey_meadow",
+				"tree_stump",
+				"town_center",
+				"lotus_island",
+				"candy_falls",
+				"winter_park",
+				"carved",
+				"park_path",
+				"alpine_run",
+				"frozen_over",
+				"in_the_loop",
+				"cubism",
+				"four_circles",
+				"hedge",
+				"end_of_the_road",
+				"logs",
+				"bazaar",
+				"adoras_temple",
+				"spring_spring",
+				"kartsndarts",
+				"moon_landing",
+				"haunted",
+				"downstream",
+				"firing_range",
+				"cracked",
+				"streambed",
+				"chutes",
+				"rake",
+				"spice_islands",
+				"geared",
+				"spillway",
+				"cargo",
+				"pats_pond",
+				"peninsula",
+				"high_finance",
+				"another_brick",
+				"off_the_coase",
+				"cornfield",
+				"underground",
+				"flooded_valley",
+				"infernal",
+				"bloody_puddles",
+				"workshop",
+				"quad",
+				"dark_castle",
+				"muddy_puddles",
+				"ouch"
+			]
+		},
+		"difficulty": {
+			"type": "string",
+			"const": "easy"
+		},
+		"mode": {
+			"type": "string",
+			"const": "deflation"
+		},
+		"towers": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"location": {
+						"type": "object",
+						"properties": {
+							"x": {
+								"type": "number"
+							},
+							"y": {
+								"type": "number"
+							}
+						},
+						"required": [
+							"x",
+							"y"
+						]
+					},
+					"tower": {
+						"type": "string",
+						"enum": [
+							"hero",
+							"dart_monkey",
+							"boomerang_monkey",
+							"bomb_shooter",
+							"tack_shooter",
+							"ice_monkey",
+							"glue_gunner",
+							"sniper_monkey",
+							"monkey_sub",
+							"monkey_buccaneer",
+							"monkey_ace",
+							"heli_pilot",
+							"mortar_monkey",
+							"wizard_monkey",
+							"super_monkey",
+							"ninja_monkey",
+							"alchemist",
+							"druid",
+							"banana_farm",
+							"spike_factory",
+							"monkey_village",
+							"monkey_engineer"
+						]
+					},
+					"upgrades": {
+						"type": "array",
+						"items": {
+							"type": "object",
+							"properties": {
+								"path": {
+									"type": "number",
+									"enum": [
+										1,
+										2,
+										3
+									]
+								}
+							},
+							"required": [
+								"path"
+							]
+						}
+					}
+				},
+				"required": [
+					"location",
+					"tower"
+				],
+				"additionalProperties": false
+			}
+		}
+	},
+	"allof": [
+		{
+			"if": {
+				"properties": {
+					"difficulty": {
+						"const": "easy"
+					}
+				}
+			},
+			"then": {
+				"properties": {
+					"mode": {
+						"enum": [
+							"standard",
+							"primary_only",
+							"deflation",
+							"sandbox"
+						]
+					}
+				}
+			}
+		},
+		{
+			"if": {
+				"properties": {
+					"difficulty": {
+						"const": "medium"
+					}
+				}
+			},
+			"then": {
+				"properties": {
+					"mode": {
+						"enum": [
+							"standard",
+							"military_only",
+							"apopalypse",
+							"reverse",
+							"sandbox"
+						]
+					}
+				}
+			}
+		},
+		{
+			"if": {
+				"properties": {
+					"difficulty": {
+						"const": "hard"
+					}
+				}
+			},
+			"then": {
+				"properties": {
+					"mode": {
+						"enum": [
+							"standard",
+							"magic_only",
+							"double_hp_moabs",
+							"half_cash",
+							"alternate_bloons_rounds",
+							"impoppable",
+							"chimps",
+							"sandbox"
+						]
+					}
+				}
+			}
+		}
+	],
+	"required": [
+		"name",
+		"map",
+		"difficulty",
+		"mode"
+	],
+	"additionalProperties": false
+}
