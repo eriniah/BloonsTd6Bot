@@ -250,18 +250,19 @@ class DifficulyNavigator(UiInterface):
 			return None
 		self._delay_handler.menu_navigation_delay()
 
-		mode_button = self.locateCenterOnScreen('resources/difficulty/mode_' + mode + '.PNG')
+		# mode_button = self.locateCenterOnScreen('resources/difficulty/mode_' + mode + '.PNG')
+		# TODO: assuming deflation
+		mode_button = Point(1075, 400)
 		if not mode_button:
 			print('Unable to find mode "' + mode + '" under difficulty "' + difficulty + '"')
 			return None
-		self.click(mode_button)
+		self.relative_click(mode_button)
 		self._delay_handler.game_start_delay()
 
 		# Some game modes have a notification at the beginning. Acknowledge it
-		ok_button = self.locateCenterOnScreen('resources/menu/menu_ok.PNG')
-		if ok_button:
-			self.click(ok_button)
-			self._delay_handler.menu_navigation_delay()
+		ok_button = Point(800, 670)
+		self.relative_click(ok_button)
+		self._delay_handler.menu_navigation_delay()
 
 		return GameInterface(self._delay_handler)
 
