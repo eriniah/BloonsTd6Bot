@@ -178,17 +178,8 @@ class MapSelection(UiInterface):
 		Returns:
 			DifficulyNavigator if success, otherwise None. If None, the page remains on the maps page
 		"""
-		check = 0
-		map_img_location = 'resources/map/' + map_name + '.PNG'
-		map_location = self.locateCenterOnScreen(map_img_location)
-		while not map_location and check < 10:
-			self._next()
-			check += 1
-			map_location = self.locateCenterOnScreen(map_img_location)
-		if not map_location:
-			print('Failed to locate map "' + map_name + '"')
-			return None
-		self.click(map_location)
+		self._prev()
+		self.relative_click(Point(800, 250))
 		self._delay_handler.menu_navigation_delay()
 		return DifficulyNavigator(self._delay_handler)
 
