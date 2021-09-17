@@ -150,8 +150,8 @@ class MapSelection(UiInterface):
 			ValueError: If unable to locate required UI buttons
 		"""
 		self._delay_handler = delay_handler
-		self._next_button = self.locateCenterOnScreen('resources/menu/menu_next.PNG')
-		self._prev_button = self.locateCenterOnScreen('resources/menu/menu_prev.PNG')
+		self._next_button = Point(1375, 400)
+		self._prev_button = Point(235, 400)
 
 		if not self._next_button or not self._prev_button:
 			raise ValueError('Unable to locate next and previous button')
@@ -159,12 +159,12 @@ class MapSelection(UiInterface):
 	def _next(self):
 		""" Navigate to the next set of maps (right arrow)
 		"""
-		self.click(self._next_button)
+		self.relative_click(self._next_button)
 
 	def _prev(self):
 		""" Navigate to the previous set of maps (left arrow)
 		"""
-		self.click(self._prev_button)
+		self.relative_click(self._prev_button)
 
 	def select_map(self, map_name):
 		""" Select a map that matches the provided image
