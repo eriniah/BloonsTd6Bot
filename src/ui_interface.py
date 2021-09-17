@@ -213,7 +213,7 @@ class DifficulyNavigator(UiInterface):
 			ValueError: If unable to locate required UI buttons
 		"""
 		self._delay_handler = delay_handler
-		self._easy_button = self.locateCenterOnScreen('resources/difficulty/diff_easy.PNG')
+		self._easy_button = Point(530, 400)
 		self._medium_button = self.locateCenterOnScreen('resources/difficulty/diff_medium.PNG')
 		self._hard_button = self.locateCenterOnScreen('resources/difficulty/diff_hard.PNG')
 
